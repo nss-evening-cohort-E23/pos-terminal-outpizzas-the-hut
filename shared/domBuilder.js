@@ -1,13 +1,13 @@
-import renderToDom from '../utils/renderToDom'
+import renderToDom from '../utils/renderToDom';
 
 const domBuilder = () => {
-  const domString =`
+  const domString = `
   <div id="navBar"></div>
   <div id="maincontainer">
     <div id="formContainer"></div>
     <div id="viewContainer"></div>
-  </div>`
-  renderToDom('#app', domString)
-}
+  </div>`;
+  renderToDom('#app', domString);
+};
 
 export default domBuilder;
