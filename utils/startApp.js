@@ -1,3 +1,4 @@
+import navagationEvents from '../events/navigationEvents';
 import homePage from '../pages/home';
 import domBuilder from '../shared/domBuilder';
 import navBar from '../shared/navBar';
@@ -8,6 +9,7 @@ const startApp = () => {
   navBar();
   homePage();
   domEvents();
+  navagationEvents();
 };
 
 export default startApp;
