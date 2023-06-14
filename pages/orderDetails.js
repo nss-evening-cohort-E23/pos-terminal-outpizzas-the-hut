@@ -5,17 +5,16 @@ const viewOrder = (obj) => {
   clearDom();
 
   const domString = `
-  <div class="mt-5 d-flex flex-wrap">
-    <div class="d-flex flex-column">
+  <div class="card" style="width: 18rem;">
+      <div class="card-body">
       <div class="mt-5">
+      <h5>${obj.menuItems[0].dish}</h5>
+      <h5>${obj.menuItems[0].price}</h5>
         <i id="edit-item-btn--">EDIT ITEM</i>
         <i id="delete-item--">DELETE ITEM</i>
       </div>
     </div>
-  <div class="text-white ms-5 details">
-    <h5>${obj.name}</h5>
-    <h5>${obj.name}</h5>
-     </div>
+    </div>
    </div>`;
 
   renderToDom('#app', domString);
