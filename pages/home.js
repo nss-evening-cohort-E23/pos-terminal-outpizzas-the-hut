@@ -1,4 +1,4 @@
-import renderToDom from '../utils/renderToDom'
+import renderToDom from '../utils/renderToDom';
 
 const homePage = () => {
   const domString = `
@@ -6,7 +6,7 @@ const homePage = () => {
   <button type="button" class="btn btn-primary">View Orders</button>
   <button type="button" class="btn btn-primary">Create An Order</button>
   <button type="button" class="btn btn-primary">View Revenue</button>
-  `
+  `;
   renderToDom('#viewContainer', domString);
 };
 

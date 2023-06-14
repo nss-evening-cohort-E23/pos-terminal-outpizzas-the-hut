@@ -1,7 +1,7 @@
-import renderToDom from "../utils/renderToDom"
+import renderToDom from '../utils/renderToDom';
 
 const navBar = () => {
-  const domString=`
+  const domString = `
   <nav class="navbar bg-body-tertiary">
   <div class="container">
     <a class="navbar-brand" href="#">
@@ -11,8 +11,9 @@ const navBar = () => {
     <button type="button" class="btn btn-primary">Create order</button>
     <div id="logout"></div>
   </div>
-</nav>`
+</nav>`;
+
   renderToDom('#navBar', domString);
 };
 
-export default navBar
+export default navBar;
