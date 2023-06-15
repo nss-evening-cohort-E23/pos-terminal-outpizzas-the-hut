@@ -23,7 +23,7 @@ const newOrderForm = (obj = {}) => {
           <option option value="Online">Online</option>
           <option value="In-Person">In-Person</option>
         </select><hr>
-        <button type="button"></button>
+      <button id="addItemsToOrder" type="button" class="btn btn-primary">Add Items To Order</button>
       <button type="submit" class="btn btn-primary">Submit Order
       </button>
     </form>
