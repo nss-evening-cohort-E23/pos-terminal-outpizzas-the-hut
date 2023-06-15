@@ -5,10 +5,10 @@ const navBar = () => {
   <nav class="navbar bg-body-tertiary">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24">
+      <img id="logo" src="https://i.kym-cdn.com/entries/icons/original/000/032/408/cover1.jpg" alt="Bootstrap" width="50" height="30">
     </a>
     <button id="viewOrders" type="button" class="btn btn-primary">View orders</button>
-    <button type="button" class="btn btn-primary">Create order</button>
+    <button id="create-order-btn" type="button" class="btn btn-primary">Create order</button>
     <button id="viewMenu" type="button" class="btn btn-primary">View Menu</button>
     <div id="logout"></div>
   </div>
