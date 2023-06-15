@@ -3,6 +3,7 @@ import homePage from '../pages/home';
 import domBuilder from '../shared/domBuilder';
 import navBar from '../shared/navBar';
 import domEvents from '../events/domEvents';
+import formEvents from '../events/formEvents';
 
 const startApp = () => {
   domBuilder();
@@ -10,6 +11,7 @@ const startApp = () => {
   homePage();
   domEvents();
   navagationEvents();
+  formEvents();
 };
 
 export default startApp;
