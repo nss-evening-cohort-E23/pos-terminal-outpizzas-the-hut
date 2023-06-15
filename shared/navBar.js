@@ -8,7 +8,7 @@ const navBar = () => {
       <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24">
     </a>
     <button id="viewOrders" type="button" class="btn btn-primary">View orders</button>
-    <button type="button" class="btn btn-primary">Create order</button>
+    <button id="create-order-btn" type="button" class="btn btn-primary">Create order</button>
     <div id="logout"></div>
   </div>
 </nav>`;
