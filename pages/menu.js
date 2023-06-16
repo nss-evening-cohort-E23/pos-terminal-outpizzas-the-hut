@@ -18,8 +18,8 @@ const showMenu = (array) => {
           <h6 class="card-subtitle mb-2 text-body-secondary" id="item-price">Price: ${item.price}</h6>
           <hr>
           <div id="card-icons">
-            <i id="update-card--${item.firebaseKey}" class="fas fa-solid fa-pen fa-lg"></i>
-            <i id="delete-card--${item.firebaseKey}" class="fas fa-solid fa-trash fa-lg"></i>
+            <i id="edit-menu-item--${item.firebaseKey}" type="button" class="fas fa-solid fa-pen fa-lg"></i>
+            <i id="delete-menu-item--${item.firebaseKey}" type="button" class="fas fa-solid fa-trash fa-lg"></i>
           </div>
         </div>
       </div>`;
