@@ -5,7 +5,7 @@ const navBar = () => {
   <nav class="navbar bg-body-tertiary">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img id="logo" src="https://i.kym-cdn.com/entries/icons/original/000/032/408/cover1.jpg" alt="Bootstrap" width="50" height="30">
+      <img id="logo" src="https://user-images.githubusercontent.com/29741570/205346767-a182560c-64a6-4cfa-80b3-0d64cf998242.png" alt="Bootstrap" width="50" height="30">
     </a>
     <button id="viewOrders" type="button" class="btn btn-primary">View orders</button>
     <button id="create-order-btn" type="button" class="btn btn-primary">Create order</button>
