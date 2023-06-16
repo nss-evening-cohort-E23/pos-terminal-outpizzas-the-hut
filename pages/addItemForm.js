@@ -16,7 +16,7 @@ const addItemForm = (item = {}) => {
     </div>
   </form>`;
 
-  renderToDom('#itemFormContainer', domString);
+  renderToDom('#formContainer', domString);
 };
 
 export default addItemForm;
