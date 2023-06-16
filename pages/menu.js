@@ -24,7 +24,7 @@ const showMenu = (array) => {
         </div>
       </div>`;
   });
-  renderToDom('#menuContainer', domString);
+  renderToDom('#viewContainer', domString);
 };
 
 export { emptyMenu, showMenu };
