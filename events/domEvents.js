@@ -2,10 +2,11 @@ import viewOrder from '../pages/orderDetails';
 import {
   getSingleOrder, deleteOrderItem, deleteOrder, getOrder
 } from '../api/orderData';
-import { getMenuItem, getSingleMenuItem } from '../api/menuData';
+import getSingleMenuItem from '../api/menuData';
 import newOrderForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
 import showOrderCards from '../pages/showOrder';
+import revenuePage from '../pages/revenue';
 
 const domEvents = () => {
   document.querySelector('#maincontainer').addEventListener('click', (e) => {
@@ -28,7 +29,6 @@ const domEvents = () => {
         getOrder().then(showOrderCards);
       });
     }
-
     if (e.target.id.includes('delete-item--')) {
       const [, firebaseKey, key2] = (e.target.id.split('--'));
       deleteOrderItem(firebaseKey, key2).then(() => {
@@ -41,6 +41,10 @@ const domEvents = () => {
       const [, firebaseKey] = e.target.id.split('--');
 
       getSingleMenuItem(firebaseKey).then((cardObj) => addItemForm(cardObj));
+    }
+    if (e.target.id === 'revenueBtn') {
+      console.warn('clicked menu button');
+      getOrder().then(revenuePage);
     }
   });
 };
