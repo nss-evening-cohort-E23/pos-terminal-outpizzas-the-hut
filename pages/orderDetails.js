@@ -13,13 +13,17 @@ const viewOrder = (obj) => {
         <div class="mt-5">
         <h5>${obj.menuItems[i].dish}</h5>
         <h5>${obj.menuItems[i].price}</h5>
-          <i id="edit-item-btn--">EDIT ITEM</i>
-          <i id="delete-item--">DELETE ITEM</i>
+          <i id="delete-item--${obj.firebaseKey}--${obj.menuItems[i].firebaseKey}">DELETE ITEM</i>
         </div>
       </div>
       </div>
      </div>`;
   }
+
+  domString += `
+  <button type="button" class="btn btn-primary" id="addmenuitem">Add Item</button>
+  <button type="button" class="btn btn-primary" id"payment">Go To Payment</button>
+  `;
 
   renderToDom('#viewContainer', domString);
 };

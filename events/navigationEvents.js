@@ -1,7 +1,7 @@
 import { getOrder } from '../api/orderData';
 import showOrderCards from '../pages/showOrder';
 
-const navagationEvents = () => {
+const navigationEvents = () => {
   document.querySelector('#navBar').addEventListener('click', (e) => {
     if (e.target.id === 'viewOrders') {
       getOrder().then(showOrderCards);
@@ -9,4 +9,4 @@ const navagationEvents = () => {
   });
 };
 
-export default navagationEvents;
+export default navigationEvents;
