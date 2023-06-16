@@ -1,5 +1,5 @@
 import viewOrder from '../pages/orderDetails';
-import { getMenuItem } from '../api/menuData';
+import { getMenuItem, getSingleMenuItem } from '../api/menuData';
 import newOrderForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
 
@@ -17,6 +17,13 @@ const domEvents = () => {
     if (e.target.id === 'add-menu-item') {
       console.warn('add menu item button clicked');
       addItemForm();
+    }
+    // EDIT MENU ITEM CLICK EVENT
+    if (e.target.id.includes('edit-menu-item')) {
+      console.warn('edit menu item button clicked');
+      const [, firebaseKey] = e.target.id.split('--');
+
+      getSingleMenuItem(firebaseKey).then((cardObj) => addItemForm(cardObj));
     }
   });
 };
