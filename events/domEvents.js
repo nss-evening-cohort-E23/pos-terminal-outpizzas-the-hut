@@ -2,7 +2,7 @@ import viewOrder from '../pages/orderDetails';
 import {
   getSingleOrder, deleteOrderItem, deleteOrder, getOrder
 } from '../api/orderData';
-import getSingleMenuItem from '../api/menuData';
+import { getSingleMenuItem } from '../api/menuData';
 import newOrderForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
 import showOrderCards from '../pages/showOrder';
