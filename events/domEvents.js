@@ -5,6 +5,7 @@ import {
 import newOrderForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
 import showOrderCards from '../pages/showOrder';
+import revenuePage from '../pages/revenue';
 
 const domEvents = () => {
   document.querySelector('#maincontainer').addEventListener('click', (e) => {
@@ -33,6 +34,10 @@ const domEvents = () => {
       deleteOrderItem(firebaseKey, key2).then(() => {
         getSingleOrder(firebaseKey).then(viewOrder);
       });
+    }
+    if (e.target.id === 'revenueBtn') {
+      console.warn('clicked menu button');
+      getOrder().then(revenuePage);
     }
   });
 };
