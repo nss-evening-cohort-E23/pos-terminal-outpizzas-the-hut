@@ -2,9 +2,11 @@ import viewOrder from '../pages/orderDetails';
 import {
   getSingleOrder, deleteOrderItem, deleteOrder, getOrder
 } from '../api/orderData';
+import { getSingleMenuItem } from '../api/menuData';
 import newOrderForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
 import showOrderCards from '../pages/showOrder';
+import revenuePage from '../pages/revenue';
 import closeOrderForm from '../pages/closeOrderForm';
 
 const domEvents = () => {
@@ -38,6 +40,17 @@ const domEvents = () => {
       deleteOrderItem(firebaseKey, key2).then(() => {
         getSingleOrder(firebaseKey).then(viewOrder);
       });
+    }
+    // EDIT MENU ITEM CLICK EVENT
+    if (e.target.id.includes('edit-menu-item')) {
+      console.warn('edit menu item button clicked');
+      const [, firebaseKey] = e.target.id.split('--');
+
+      getSingleMenuItem(firebaseKey).then((cardObj) => addItemForm(cardObj));
+    }
+    if (e.target.id === 'revenueBtn') {
+      console.warn('clicked menu button');
+      getOrder().then(revenuePage);
     }
   });
 };
