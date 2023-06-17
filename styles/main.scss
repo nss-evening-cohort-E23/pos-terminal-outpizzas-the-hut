@@ -1,14 +1,60 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Playfair&family=Raleway:wght@300;600&family=Rubik+Moonrocks&display=swap');
 
 
 body {
-  background-color: antiquewhite;
-  color: brown;
+  background-color: rgb(52, 52, 52);
+  color: rgb(240, 240, 240);
   text-align: center;
-  margin-top: 100px;
 }
 
-form {
-  height: 300px;
+nav {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.card {
+  margin: 5px;
+}
+
+.btn {
+  margin: 5px;
+}
+
+.top-row {
+  width: 100%;
+  flex: 0 0 100%;
+  margin: 20px;
+  text-align: center;
+}
+
+#logo {
+  text-align: start;
+}
+
+#viewContainer {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+#welcome-title {
+  font-family: 'Bungee Shade', cursive;
+  font-size: 100px;
+  margin: 10px;
+}
+
+#welcome-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+#pizza-pic {
+  max-width: 13rem;
 }
