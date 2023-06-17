@@ -1,6 +1,8 @@
 import { getOrder } from '../api/orderData';
 import showOrderCards from '../pages/showOrder';
 import newOrderForm from '../components/newOrderForm';
+import { getMenuItem } from '../api/menuData';
+import { showMenu } from '../pages/menu';
 
 const navigationEvents = () => {
   document.querySelector('#navBar').addEventListener('click', (e) => {

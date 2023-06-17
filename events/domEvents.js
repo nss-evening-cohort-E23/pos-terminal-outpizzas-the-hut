@@ -2,6 +2,9 @@ import viewOrder from '../pages/orderDetails';
 import { getMenuItem } from '../api/menuData';
 import newOrderForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
+import showOrderMenu from '../pages/selectorMenu';
+// import { showMenu } from '../pages/menu';
+// import addItemsToOrder from '../pages/addItemsToOrder';
 
 const domEvents = () => {
   document.querySelector('#maincontainer').addEventListener('click', (e) => {
@@ -17,6 +20,11 @@ const domEvents = () => {
     if (e.target.id === 'add-menu-item') {
       console.warn('add menu item button clicked');
       addItemForm();
+    }
+    if (e.target.id.includes('addItemsToOrder')) {
+      console.warn('test');
+      // addItemsToOrder();
+      getMenuItem().then(showOrderMenu);
     }
   });
 };
