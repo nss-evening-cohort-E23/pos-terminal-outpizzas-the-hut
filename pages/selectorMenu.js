@@ -1,10 +1,9 @@
-import clearDom from '../utils/clearDom';
+// import clearDom from '../utils/clearDom';
 import renderToDom from '../utils/renderToDom';
 
 const showOrderMenu = (array) => {
-  clearDom();
+  let domString = '<button id="submit-order" type="submit" class="btn btn-primary">Submit</button>';
 
-  let domString = '<button id="order-overview" type="button" class="btn btn-primary">Back to Order Overview</button>';
   array.forEach((item) => {
     domString += `
     <div class="card" id="${item.dish}-card" style="width: 18rem;">
@@ -18,7 +17,7 @@ const showOrderMenu = (array) => {
       </div>
     </div>`;
   });
-  renderToDom('#menuContainer', domString);
+  renderToDom('#showMenuItems', domString);
 };
 
 export default showOrderMenu;

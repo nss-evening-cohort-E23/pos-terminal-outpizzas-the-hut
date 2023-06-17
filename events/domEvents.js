@@ -3,6 +3,8 @@ import { getMenuItem } from '../api/menuData';
 import newOrderForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
 import showOrderMenu from '../pages/selectorMenu';
+import { createOrder, updateOrder, getOrder } from '../api/orderData';
+import showOrderCards from '../pages/showOrder';
 // import { showMenu } from '../pages/menu';
 // import addItemsToOrder from '../pages/addItemsToOrder';
 
@@ -13,7 +15,6 @@ const domEvents = () => {
       getMenuItem(firebaseKey).then(viewOrder);
     }
     if (e.target.id === 'create-order-btn') {
-      console.warn('test');
       newOrderForm();
     }
     // Brings up form to add an item to the menu
@@ -22,9 +23,27 @@ const domEvents = () => {
       addItemForm();
     }
     if (e.target.id.includes('addItemsToOrder')) {
-      console.warn('test');
-      // addItemsToOrder();
       getMenuItem().then(showOrderMenu);
+    }
+    if (e.target.id.includes('submit-order')) {
+      console.warn('testtttttt');
+      const payload = {
+        completed: false,
+        email: document.querySelector('#email-form').value,
+        name: document.querySelector('#name').value,
+        orderMethod: document.querySelector('#orderType').value,
+        orderPrice: document.querySelector('#orderPrice').value,
+        phone: document.querySelector('#phone').value,
+        menuItems: document.querySelector('#menuItems').value,
+      };
+
+      createOrder(payload).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+
+        updateOrder(patchPayload).then(() => {
+          getOrder().then(showOrderCards);
+        });
+      });
     }
   });
 };
