@@ -1,4 +1,6 @@
 import { createMenuItem, updateMenuItem, getMenuItem } from '../api/menuData';
+import { updateOrder } from '../api/orderData';
+import homePage from '../pages/home';
 import { showMenu } from '../pages/menu';
 
 const formEvents = () => {
@@ -37,6 +39,21 @@ const formEvents = () => {
 
       updateMenuItem(payload).then(() => {
         getMenuItem().then(showMenu);
+      });
+    }
+
+    if (e.target.id.includes('submit-order')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      console.warn(firebaseKey);
+      const payload = {
+        paymentType: document.querySelector('#ptype').value,
+        tip: document.querySelector('#tip-input').value,
+        completed: true,
+        firebaseKey,
+      };
+
+      updateOrder(payload).then(() => {
+        homePage();
       });
     }
   });

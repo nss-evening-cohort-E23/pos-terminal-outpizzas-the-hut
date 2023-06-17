@@ -7,6 +7,7 @@ import newOrderForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
 import showOrderCards from '../pages/showOrder';
 import revenuePage from '../pages/revenue';
+import closeOrderForm from '../pages/closeOrderForm';
 import { showMenu } from '../pages/menu';
 
 const domEvents = () => {
@@ -30,6 +31,12 @@ const domEvents = () => {
         getOrder().then(showOrderCards);
       });
     }
+
+    if (e.target.id.includes('payment')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getSingleOrder(firebaseKey).then((orderObj) => closeOrderForm(orderObj));
+    }
+
     if (e.target.id.includes('delete-item--')) {
       const [, firebaseKey, key2] = (e.target.id.split('--'));
       deleteOrderItem(firebaseKey, key2).then(() => {
