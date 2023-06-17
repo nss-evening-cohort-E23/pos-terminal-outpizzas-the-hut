@@ -5,6 +5,7 @@ import {
 import newOrderForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
 import showOrderCards from '../pages/showOrder';
+import closeOrderForm from '../pages/closeOrderForm';
 
 const domEvents = () => {
   document.querySelector('#maincontainer').addEventListener('click', (e) => {
@@ -26,6 +27,10 @@ const domEvents = () => {
       deleteOrder(firebaseKey).then(() => {
         getOrder().then(showOrderCards);
       });
+    }
+
+    if (e.target.id.includes('payment')) {
+      closeOrderForm();
     }
 
     if (e.target.id.includes('delete-item--')) {
