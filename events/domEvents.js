@@ -32,7 +32,8 @@ const domEvents = () => {
     }
 
     if (e.target.id.includes('payment')) {
-      closeOrderForm();
+      const [, firebaseKey] = e.target.id.split('--');
+      getSingleOrder(firebaseKey).then((orderObj) => closeOrderForm(orderObj));
     }
 
     if (e.target.id.includes('delete-item--')) {
