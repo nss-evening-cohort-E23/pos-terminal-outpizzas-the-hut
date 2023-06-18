@@ -16,6 +16,7 @@ const showOrderCards = (array) => {
     <li class="list-group-item">Customer phone number ${card.phone}</li>
     <li class="list-group-item">Customer phone number ${card.email}</li>
     <li class="list-group-item">Order type: ${card.orderMethod}</li>
+    <li class="list-group-item">Order total: $${card.orderPrice}</li>
   </ul>
   <div class="card-body">
     <a href="#" id="order-details--${card.firebaseKey}" class="card-link">Details</a>
