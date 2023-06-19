@@ -2,6 +2,7 @@ import { createMenuItem, updateMenuItem, getMenuItem } from '../api/menuData';
 import { updateOrder } from '../api/orderData';
 import homePage from '../pages/home';
 import { showMenu } from '../pages/menu';
+// import showOrderCards from '../pages/showOrder';
 
 const formEvents = () => {
   document.querySelector('#maincontainer').addEventListener('submit', (e) => {
@@ -42,7 +43,7 @@ const formEvents = () => {
       });
     }
 
-    if (e.target.id.includes('submit-order')) {
+    if (e.target.id.includes('close-order')) {
       const [, firebaseKey] = e.target.id.split('--');
       console.warn(firebaseKey);
       const payload = {

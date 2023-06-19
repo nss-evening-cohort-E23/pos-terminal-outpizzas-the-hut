@@ -9,7 +9,6 @@ const navBar = () => {
     </a>
     <button id="viewOrders" type="button" class="btn btn-primary">View orders</button>
     <button id="createOrder" type="button" class="btn btn-primary">Create order</button>
-    <button id="create-order-btn" type="button" class="btn btn-primary">Create order</button>
     <button id="viewMenu" type="button" class="btn btn-primary">View Menu</button>
     <div id="logout"></div>
   </div>

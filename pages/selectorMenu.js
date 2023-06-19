@@ -2,7 +2,7 @@
 import renderToDom from '../utils/renderToDom';
 
 const showOrderMenu = (array) => {
-  let domString = '<button id="submit-order" type="submit" class="btn btn-primary">Submit</button>';
+  let domString = '<button type="submit" class="btn btn-primary">Submit</button>';
 
   array.forEach((item) => {
     domString += `
@@ -12,7 +12,7 @@ const showOrderMenu = (array) => {
         <h6 class="card-subtitle mb-2 text-body-secondary" id="item-price">Price: ${item.price}</h6>
         <hr>
         <div id="card-icons">
-          <button id="add-item--${item.firebaseKey}" class="fas fa-solid fa-plus"></button>
+          <button type="button" id="add-order-item--${item.firebaseKey}" class="fas fa-solid fa-plus"></button>
         </div>
       </div>
     </div>`;

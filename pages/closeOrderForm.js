@@ -4,7 +4,7 @@ import renderToDom from '../utils/renderToDom';
 const closeOrderForm = (order = {}) => {
   clearDom();
   const domString = `
-  <form id="submit-order--${order.firebaseKey}">
+  <form id="close-order--${order.firebaseKey}">
     <div class="form-box">
       <h3 id="form-title">Close Order</h3>
       <label for="payment">Payment Type</label>
@@ -18,7 +18,7 @@ const closeOrderForm = (order = {}) => {
     <label for="payment">Tip Amount</label>
       <input type="text" class="form-control" id="tip-input" placeholder="Enter a tip amount" value="${order.tip || ''}" required>
     </div>
-      <button type="submit" id="close-order-btn" class="btn btn-danger" for="submit-order">Close Order</button>
+      <button type="submit" id="close-order-btn" class="btn btn-danger" for="close-order">Close Order</button>
     </div>
   </form>
   `;

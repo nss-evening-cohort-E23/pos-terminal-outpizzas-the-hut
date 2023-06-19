@@ -1,7 +1,8 @@
 import viewOrder from '../pages/orderDetails';
 import {
   getSingleOrder, deleteOrderItem, deleteOrder, getOrder
-} from '../api/orderData';
+}
+  from '../api/orderData';
 import { getSingleMenuItem, deleteMenuItem, getMenuItem } from '../api/menuData';
 import newOrderForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
@@ -10,8 +11,6 @@ import revenuePage from '../pages/revenue';
 import closeOrderForm from '../pages/closeOrderForm';
 import { showMenu } from '../pages/menu';
 import showOrderMenu from '../pages/selectorMenu';
-import { createOrder, updateOrder, getOrder } from '../api/orderData';
-import showOrderCards from '../pages/showOrder';
 // import { showMenu } from '../pages/menu';
 // import addItemsToOrder from '../pages/addItemsToOrder';
 
@@ -71,27 +70,6 @@ const domEvents = () => {
     if (e.target.id.includes('addItemsToOrder')) {
       getMenuItem().then(showOrderMenu);
     }
-    if (e.target.id.includes('submit-order')) {
-      console.warn('testtttttt');
-      const payload = {
-        completed: false,
-        email: document.querySelector('#email-form').value,
-        name: document.querySelector('#name').value,
-        orderMethod: document.querySelector('#orderType').value,
-        orderPrice: document.querySelector('#orderPrice').value,
-        phone: document.querySelector('#phone').value,
-        menuItems: document.querySelector('#menuItems').value,
-      };
-
-      createOrder(payload).then(({ name }) => {
-        const patchPayload = { firebaseKey: name };
-
-        updateOrder(patchPayload).then(() => {
-          getOrder().then(showOrderCards);
-        });
-      });
-    }
   });
 };
-
 export default domEvents;
