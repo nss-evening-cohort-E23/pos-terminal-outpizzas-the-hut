@@ -52,7 +52,7 @@ const formEvents = () => {
       console.warn(firebaseKey);
       const payload = {
         paymentType: document.querySelector('#ptype').value,
-        tip: document.querySelector('#tip-input').value,
+        tip: Number(document.querySelector('#tip-input').value),
         completed: true,
         firebaseKey,
       };
