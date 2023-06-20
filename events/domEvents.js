@@ -8,6 +8,7 @@ import addItemForm from '../pages/addItemForm';
 import showOrderCards from '../pages/showOrder';
 import revenuePage from '../pages/revenue';
 import { showMenu } from '../pages/menu';
+import { filterClosed, filterOpen, search } from '../utils/sample_data/filterFun';
 
 const domEvents = () => {
   document.querySelector('#maincontainer').addEventListener('click', (e) => {
@@ -57,6 +58,29 @@ const domEvents = () => {
       console.warn('clicked menu button');
       getOrder().then(revenuePage);
     }
+  });
+  document.querySelector('#maincontainer').addEventListener('change', (e) => {
+    switch (e.target.value) {
+      case '1':
+        console.warn(1);
+        filterClosed();
+        break;
+      case '2':
+        console.warn(2);
+        filterOpen();
+        break;
+      // case '3':
+      //   console.warn('3');
+      //   filterNew(user);
+      //   break;
+      default:
+        break;
+    }
+  });
+  document.querySelector('#viewContainer').addEventListener('keyup', (e) => {
+    e.preventDefault();
+    console.warn(e.target.value);
+    search(e);
   });
 };
 
