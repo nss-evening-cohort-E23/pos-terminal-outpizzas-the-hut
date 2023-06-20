@@ -25,11 +25,11 @@ A web app designed to serve as a point of sale system for an imagined mom & pop 
 The target user for this application is a restaurant owner or businessperson overseeing restaurant management and operations. Restaurants must be organized, efficient, and on top of their revenue metrics in order to succeed in this industry, and this app provides a simple foundation for all of the above. This allows the user to spend less time combing through spreadsheets and more time focused on providing an excellent customer experience. 
 
 
-**[Link to Figma wireframe]([url](https://www.figma.com/file/627muqsb4Ns7tA0b2viebw/Outpizzas-the-Hut?type=design&node-id=0-1&t=MbsoMFWYghABVN5g-0))**
+**[Link to Figma wireframe](https://www.figma.com/file/627muqsb4Ns7tA0b2viebw/Outpizzas-the-Hut?type=design&node-id=0-1&t=MbsoMFWYghABVN5g-0)**
 
-**[Link to Entity Relationship Diagram]([url](https://dbdiagram.io/d/647b5464722eb7749454a86e))**
+**[Link to Entity Relationship Diagram](https://dbdiagram.io/d/647b5464722eb7749454a86e)**
 
-**[Link to GitHub issue tickets]([url](https://github.com/nss-evening-cohort-E23/pos-terminal-outpizzas-the-hut/issues?q=is%3Aissue+is%3Aclosed))**
+**[Link to GitHub issue tickets](https://github.com/nss-evening-cohort-E23/pos-terminal-outpizzas-the-hut/issues?q=is%3Aissue+is%3Aclosed)**
 
 
 **Contributors:**
