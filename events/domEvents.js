@@ -1,8 +1,7 @@
 import viewOrder from '../pages/orderDetails';
 import {
-  getSingleOrder, deleteOrderItem, deleteOrder, getOrder
-}
-  from '../api/orderData';
+  getSingleOrder, deleteOrderItem, deleteOrder, getOrder, completedOrders
+} from '../api/orderData';
 import { getSingleMenuItem, deleteMenuItem, getMenuItem } from '../api/menuData';
 import newForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
@@ -76,6 +75,16 @@ const domEvents = () => {
       const [, firebaseKey] = e.target.id.split('--');
 
       getSingleOrder(firebaseKey).then((cardObj) => newForm(cardObj));
+    }
+  });
+
+  document.querySelector('#viewContainer').addEventListener('change', (e) => {
+    const date1 = document.querySelector('#start').value;
+    const date2 = document.querySelector('#end').value;
+    if (e.target.id === 'end' && date1 !== '') {
+      completedOrders().then((orderArray) => revenuePage(orderArray, date1, date2));
+    } else if (e.target.id === 'start' && date2 !== '') {
+      completedOrders().then((orderArray) => revenuePage(orderArray, date1, date2));
     }
   });
 };
