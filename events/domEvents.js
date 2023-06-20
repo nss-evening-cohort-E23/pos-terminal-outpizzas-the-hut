@@ -4,7 +4,7 @@ import {
 }
   from '../api/orderData';
 import { getSingleMenuItem, deleteMenuItem, getMenuItem } from '../api/menuData';
-import newOrderForm from '../components/newOrderForm';
+import newForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
 import showOrderCards from '../pages/showOrder';
 import revenuePage from '../pages/revenue';
@@ -21,7 +21,7 @@ const domEvents = () => {
       getSingleOrder(firebaseKey).then(viewOrder);
     }
     if (e.target.id === 'create-order-btn') {
-      newOrderForm();
+      newForm();
     }
     // Brings up form to add an item to the menu
     if (e.target.id === 'add-menu-item') {

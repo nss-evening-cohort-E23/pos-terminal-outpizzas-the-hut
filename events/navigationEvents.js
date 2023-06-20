@@ -1,5 +1,5 @@
 import { getOrder } from '../api/orderData';
-import newOrderForm from '../components/newOrderForm';
+import newForm from '../components/newOrderForm';
 import showOrderCards from '../pages/showOrder';
 import { getMenuItem } from '../api/menuData';
 import { showMenu } from '../pages/menu';
@@ -11,16 +11,13 @@ const navigationEvents = () => {
     if (e.target.id === 'viewOrders') {
       getOrder().then(showOrderCards);
     }
-    if (e.target.id === 'create-order-btn') {
-      console.warn('test');
-      newOrderForm();
-    }
     if (e.target.id === 'viewMenu') {
       console.warn('clicked menu button');
       getMenuItem().then(showMenu);
     }
     if (e.target.id === 'createOrder') {
-      newOrderForm();
+      console.warn('new form event listener');
+      newForm();
     }
     if (e.target.id === 'logo') {
       console.warn('clicked menu button');
