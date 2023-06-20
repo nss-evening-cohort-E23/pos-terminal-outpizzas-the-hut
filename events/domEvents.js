@@ -70,6 +70,13 @@ const domEvents = () => {
     if (e.target.id.includes('addItemsToOrder')) {
       getMenuItem().then(showOrderMenu);
     }
+    // UPDATE ORDER BTN
+    if (e.target.id.includes('edit-order')) {
+      console.warn('update order clicked');
+      const [, firebaseKey] = e.target.id.split('--');
+
+      getSingleOrder(firebaseKey).then((cardObj) => newForm(cardObj));
+    }
   });
 };
 export default domEvents;

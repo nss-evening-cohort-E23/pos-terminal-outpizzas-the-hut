@@ -24,7 +24,7 @@ const newForm = (obj = {}) => {
           <option option value="Online">Online</option>
           <option value="In-Person">In-Person</option>
         </select><hr>
-      <button id="addItemsToOrder" type="button" class="btn btn-primary">Select Items For Order</button>
+      <button id="${obj.firebaseKey ? 'update-order' : 'addItemsToOrder'}" type="${obj.firebaseKey ? 'submit' : 'button'}" class="btn btn-primary">${obj.firebaseKey ? 'Update Order' : 'Add menu items'}</button>
       <div id="showMenuItems"></div>
     </form>
     

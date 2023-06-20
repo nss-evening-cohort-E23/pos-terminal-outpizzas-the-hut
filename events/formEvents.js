@@ -46,7 +46,23 @@ const formEvents = () => {
         getMenuItem().then(showMenu);
       });
     }
+    if (e.target.id.includes('update-order')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      console.warn('clicked edit button', e.target.id);
+      const payload = {
+        name: document.querySelector('#name').value,
+        email: document.querySelector('#email-form').value,
+        phone: document.querySelector('#phone').value,
+        time: new Date().toISOString().split('T')[0],
+        firebaseKey,
+      };
 
+      document.querySelector('form').reset();
+
+      updateOrder(payload).then(() => {
+        getOrder().then(showOrderCards);
+      });
+    }
     if (e.target.id.includes('close-order')) {
       const [, firebaseKey] = e.target.id.split('--');
       console.warn(firebaseKey);
@@ -85,7 +101,7 @@ const addOrderItemFunc = () => {
         email: document.querySelector('#email-form').value,
         name: document.querySelector('#name').value,
         orderMethod: document.querySelector('#orderType').value,
-        orderPrice: orderTotal(array),
+        orderPrice: Number(orderTotal(array)),
         phone: document.querySelector('#phone').value,
         menuItems: array
       };
@@ -93,7 +109,7 @@ const addOrderItemFunc = () => {
       createOrder(payload).then(({ name }) => {
         const patchPayload = {
           firebaseKey: name,
-          time: Date.now()
+          time: new Date().toISOString().split('T')[0],
         };
 
         updateOrder(patchPayload).then(() => {
