@@ -1,5 +1,44 @@
 <div style="text-align:center">
-<h1>Hip Hop, Pizza, and Wangs (HHP+W)</h1>
+<h1>Group Project: Hip Hop, Pizza, and Wangs (HHP+W)</h1>
+
+## Overview:
+A web app designed to serve as a point of sale system for an imagined mom & pop pizza shop. The app encompasses order creation and management, menu creation and management, and a revenue dashboard for tracking business metrics.
+
+
+## Features:
+***Orders***
+* Ability to view all customer orders, complete with customer contact information, order type, order total, and order status.
+* Ability to create and submit new orders through an order form.
+* Orders dashboard allows user to view submitted order details, update existing orders, or delete orders as needed.
+
+***Menu***
+* Ability to view restaurant menu, complete with each dish's name, price, and description.
+* Create and submit new menu items through a simple form.
+* Update existing dishes or delete dishes as needed to keep the menu FRESH!
+
+***Revenue Dashboard***
+* Revenue dashboard displays important business operation metrics, including gross income, tips received, and counters for tracking order and payment types. 
+* When an order is closed, details from the order automatically feed into the dashboard so data is always current--no spreadsheets needed!
+
+
+## Target User:
+The target user for this application is a restaurant owner or businessperson overseeing restaurant management and operations. Restaurants must be organized, efficient, and on top of their revenue metrics in order to succeed in this industry, and this app provides a simple foundation for all of the above. This allows the user to spend less time combing through spreadsheets and more time focused on providing an excellent customer experience. 
+
+
+**[Link to Figma wireframe]([url](https://www.figma.com/file/627muqsb4Ns7tA0b2viebw/Outpizzas-the-Hut?type=design&node-id=0-1&t=MbsoMFWYghABVN5g-0))**
+
+**[Link to Entity Relationship Diagram]([url](https://dbdiagram.io/d/647b5464722eb7749454a86e))**
+
+**[Link to GitHub issue tickets]([url](https://github.com/nss-evening-cohort-E23/pos-terminal-outpizzas-the-hut/issues?q=is%3Aissue+is%3Aclosed))**
+
+
+**Contributors:**
+* Mason Austin - https://github.com/Mason-Austin
+* Eli Bradford - https://github.com/elibradford227
+* Zack Hahn - https://github.com/zhahn98
+* Stacey Vanyo - https://github.com/sbvanyo
+
+<hr>
 
 <image src="https://user-images.githubusercontent.com/29741570/205346767-a182560c-64a6-4cfa-80b3-0d64cf998242.png" style="height:300px;"></image></div>
 
