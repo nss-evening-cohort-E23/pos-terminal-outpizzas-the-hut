@@ -24,7 +24,7 @@ const viewOrder = (obj) => {
     }
   }
   domString += `
-  <button type="button" class="btn btn-primary" id="addmenuitem">Add Item</button>
+  <button type="button" class="btn btn-primary" id="addmenuitem--${obj.firebaseKey}">Add Item</button>
   <button type="button" class="btn btn-primary" id="payment--${obj.firebaseKey}">Go To Payment</button>
   `;
 
