@@ -77,10 +77,10 @@ const domEvents = () => {
         break;
     }
   });
-  document.querySelector('#viewContainer').addEventListener('keyup', (e) => {
-    e.preventDefault();
-    console.warn(e.target.value);
-    search(e);
+  document.querySelector('#viewContainer').addEventListener('keydown', (e) => {
+    if (e.key === ('Enter')) {
+      search(e);
+    }
   });
 };
 
