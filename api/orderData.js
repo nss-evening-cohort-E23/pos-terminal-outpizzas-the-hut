@@ -82,6 +82,24 @@ const createOrder = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const completedOrders = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/orders.json?orderBy="completed"&equalTo=true`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
 export {
-  getOrder, getSingleOrder, deleteOrder, updateOrder, createOrder, deleteOrderItem
+  getOrder, getSingleOrder, deleteOrder, updateOrder, createOrder, deleteOrderItem, completedOrders
 };
