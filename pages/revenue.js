@@ -1,7 +1,6 @@
 import renderToDom from '../utils/renderToDom';
 
 const revenuePage = (array, input1, input2) => {
-  console.warn(array);
   let grossIncome = 0;
   let totalTips = 0;
   let totalOnline = 0;
@@ -16,41 +15,55 @@ const revenuePage = (array, input1, input2) => {
 
   domString += `<div id="date-inputs><label for="start">Start date:</label>
   <input type="date" id="start" name="rev-start"
-        value=${input1}
-        min="2018-01-01" max="2024-12-31">
+        value=${input1 ? `${input1}` : '2023-06-01'}>
   <input type="date" id="end" name="rev-end"
-        value=${input2}
-        min="2018-01-01" max="2024-12-31"></div>`;
+        value=${input2 ? `${input2}` : new Date().toISOString().split('T')[0]}>`;
   renderToDom('#viewContainer', domString);
   const date1 = document.getElementById('start').value;
   const date2 = document.getElementById('end').value;
   console.warn(date1);
+  console.warn(date2);
 
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].time > date1 && array[i].time < date2) {
-      grossIncome += (array[i].orderPrice + array[i].tip);
-      totalTips += array[i].tip;
-      if (array[i].paymentType === 'card') {
+  // for (let i = 0; i < array.length; i++)
+  array.forEach((item) => {
+    if (!input1) {
+      console.warn('defualt');
+      grossIncome += (item.orderPrice + item.tip);
+      totalTips += item.tip;
+      if (item.paymentType === 'card') {
         totalCard += 1;
       } else {
         totalCash += 1;
       }
-      if (array[i].orderMethod === 'online') {
+      if (item.orderMethod === 'Online') {
+        totalOnline += 1;
+      } else {
+        totalWalk += 1;
+      }
+    } else if (item.time > date1 && item.time < date2) {
+      grossIncome += (item.orderPrice + item.tip);
+      totalTips += item.tip;
+      if (item.paymentType === 'card') {
+        totalCard += 1;
+      } else {
+        totalCash += 1;
+      }
+      if (item.orderMethod === 'Online') {
         totalOnline += 1;
       } else {
         totalWalk += 1;
       }
     }
-  }
+  });
 
-  domString += `<div id="revenue-page"><h1><u><b>Gross Income</b></u></h1>
-  <h2><b>Gross Income:</b> $${grossIncome}</h2>
-  <h3><b>Total Tips:</b> $${totalTips}</h3>
-  <h3><b>Total online orders:</b> ${totalOnline}</h3>
-  <h3><b>Total walk in orders:</b> ${totalWalk}</h3>
-  <h3><u><b>Payment Types:</b></u></h3>
-  <h4><i>Cash</i> - ${totalCash}</h4>
-  <h4><i>Card</i> - ${totalCard}</h4></div>`;
+  domString += `<h1>Gross Income</h1>
+  <h2>Gross Income: $${grossIncome.toFixed(2)}</h2>
+  <h3>Total Tips: $${totalTips}</h3>
+  <h3>Total online orders: ${totalOnline}</h3>
+  <h3>Total walk in orders: ${totalWalk}</h3>
+  <h3>Payment Types:</h3>
+  <h4>Cash - ${totalCash}</h4>
+  <h4>Card - ${totalCard}</h4>`;
   renderToDom('#viewContainer', domString);
 };
 

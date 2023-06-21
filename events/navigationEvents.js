@@ -7,7 +7,6 @@ import homePage from '../pages/home';
 
 const navigationEvents = () => {
   document.querySelector('#navBar').addEventListener('click', (e) => {
-    console.warn(e.target.id);
     if (e.target.id === 'viewOrders') {
       getOrder().then(showOrderCards);
     }

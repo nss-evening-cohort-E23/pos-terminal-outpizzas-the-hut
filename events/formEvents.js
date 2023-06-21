@@ -6,7 +6,6 @@ import { showMenu } from '../pages/menu';
 import { createOrder, getOrder, updateOrder } from '../api/orderData';
 import showOrderCards from '../pages/showOrder';
 import orderTotal from '../utils/orderTotal';
-// import showOrderCards from '../pages/showOrder';
 
 const formEvents = () => {
   document.querySelector('#maincontainer').addEventListener('submit', (e) => {
