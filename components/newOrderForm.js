@@ -1,10 +1,11 @@
 import clearDom from '../utils/clearDom';
 import renderToDom from '../utils/renderToDom';
 
-const newOrderForm = (obj = {}) => {
+const newForm = (obj = {}) => {
   clearDom();
+  // console.warn(obj)
   const domString = `
-  <form id="${obj.firebaseKey ? `update-card--${obj.firebaseKey}` : 'submit-card'}" class="mb-4">
+  <form id="${obj.firebaseKey ? `update-order--${obj.firebaseKey}` : 'submit-order'}" class="mb-4">
       <div class="form-group">
         <label for="name">Order Name</label>
         <input type="text" class="form-control" id="name" aria-describedby="orderName" placeholder="Enter Order Name" value="${obj.name || ''}" required>
@@ -15,7 +16,7 @@ const newOrderForm = (obj = {}) => {
       </div>
       <div class="form-group">
         <label for="email">Customer Email:</label>
-        <input type="text" class="form-control" id="phone" placeholder="Enter Email" value="${obj.email || ''}" required>
+        <input type="text" class="form-control" id="email-form" placeholder="Enter Email" value="${obj.email || ''}" required>
       </div><hr>
       <div class="form-group">
         <label for="orderType">Order Type:</label>
@@ -23,13 +24,12 @@ const newOrderForm = (obj = {}) => {
           <option option value="Online">Online</option>
           <option value="In-Person">In-Person</option>
         </select><hr>
-        <button type="button"></button>
-      <button type="submit" class="btn btn-primary">Submit Order
-      </button>
+      <button id="${obj.firebaseKey ? 'update-order' : 'addItemsToOrder'}" type="${obj.firebaseKey ? 'submit' : 'button'}" class="btn btn-primary">${obj.firebaseKey ? 'Update Order' : 'Add menu items'}</button>
+      <div id="showMenuItems"></div>
     </form>
+    
   `;
-
   renderToDom('#formContainer', domString);
 };
 
-export default newOrderForm;
+export default newForm;

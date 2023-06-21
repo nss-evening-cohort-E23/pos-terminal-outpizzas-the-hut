@@ -1,14 +1,16 @@
 import viewOrder from '../pages/orderDetails';
 import {
-  getSingleOrder, deleteOrderItem, deleteOrder, getOrder
+  getSingleOrder, deleteOrderItem, deleteOrder, getOrder, completedOrders
 } from '../api/orderData';
 import { getSingleMenuItem, deleteMenuItem, getMenuItem } from '../api/menuData';
-import newOrderForm from '../components/newOrderForm';
+import newForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
 import showOrderCards from '../pages/showOrder';
 import revenuePage from '../pages/revenue';
+import closeOrderForm from '../pages/closeOrderForm';
 import { showMenu } from '../pages/menu';
 import { filterClosed, filterOpen, search } from '../utils/sample_data/filterFun';
+import showOrderMenu from '../pages/selectorMenu';
 
 const domEvents = () => {
   document.querySelector('#maincontainer').addEventListener('click', (e) => {
@@ -16,9 +18,11 @@ const domEvents = () => {
       const [, firebaseKey] = e.target.id.split('--');
       getSingleOrder(firebaseKey).then(viewOrder);
     }
+    if (e.target.id === 'viewOrders') {
+      getOrder().then(showOrderCards);
+    }
     if (e.target.id === 'create-order-btn') {
-      console.warn('test');
-      newOrderForm();
+      newForm();
     }
     // Brings up form to add an item to the menu
     if (e.target.id === 'add-menu-item') {
@@ -31,6 +35,12 @@ const domEvents = () => {
         getOrder().then(showOrderCards);
       });
     }
+
+    if (e.target.id.includes('payment')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getSingleOrder(firebaseKey).then((orderObj) => closeOrderForm(orderObj));
+    }
+
     if (e.target.id.includes('delete-item--')) {
       const [, firebaseKey, key2] = (e.target.id.split('--'));
       deleteOrderItem(firebaseKey, key2).then(() => {
@@ -56,7 +66,29 @@ const domEvents = () => {
 
     if (e.target.id === 'revenueBtn') {
       console.warn('clicked menu button');
-      getOrder().then(revenuePage);
+      completedOrders().then((orderArray) => revenuePage(orderArray));
+    }
+    if (e.target.id.includes('addItemsToOrder')) {
+      getMenuItem().then(showOrderMenu);
+    }
+    // UPDATE ORDER BTN
+    if (e.target.id.includes('edit-order')) {
+      console.warn('update order clicked');
+      const [, firebaseKey] = e.target.id.split('--');
+
+      getSingleOrder(firebaseKey).then((cardObj) => newForm(cardObj));
+    }
+  });
+
+  document.querySelector('#viewContainer').addEventListener('change', (e) => {
+    if (e.target.id === ('start') || e.target.id === ('end')) {
+      const date1 = document.querySelector('#start').value;
+      const date2 = document.querySelector('#end').value;
+      if (e.target.id === 'end' && date1 !== '') {
+        completedOrders().then((orderArray) => revenuePage(orderArray, date1, date2));
+      } else if (e.target.id === 'start' && date2 !== '') {
+        completedOrders().then((orderArray) => revenuePage(orderArray, date1, date2));
+      }
     }
   });
   document.querySelector('#maincontainer').addEventListener('change', (e) => {
@@ -69,10 +101,6 @@ const domEvents = () => {
         console.warn(2);
         filterOpen();
         break;
-      // case '3':
-      //   console.warn('3');
-      //   filterNew(user);
-      //   break;
       default:
         break;
     }
@@ -83,5 +111,4 @@ const domEvents = () => {
     }
   });
 };
-
 export default domEvents;
