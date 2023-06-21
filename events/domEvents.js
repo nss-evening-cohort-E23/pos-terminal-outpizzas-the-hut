@@ -1,14 +1,17 @@
 import viewOrder from '../pages/orderDetails';
 import {
-  getSingleOrder, deleteOrderItem, deleteOrder, getOrder
+  getSingleOrder, deleteOrderItem, deleteOrder, getOrder, completedOrders
 } from '../api/orderData';
 import { getSingleMenuItem, deleteMenuItem, getMenuItem } from '../api/menuData';
-import newOrderForm from '../components/newOrderForm';
+import newForm from '../components/newOrderForm';
 import addItemForm from '../pages/addItemForm';
 import showOrderCards from '../pages/showOrder';
 import revenuePage from '../pages/revenue';
 import closeOrderForm from '../pages/closeOrderForm';
 import { showMenu } from '../pages/menu';
+import showOrderMenu from '../pages/selectorMenu';
+// import { showMenu } from '../pages/menu';
+// import addItemsToOrder from '../pages/addItemsToOrder';
 
 const domEvents = () => {
   document.querySelector('#maincontainer').addEventListener('click', (e) => {
@@ -17,8 +20,7 @@ const domEvents = () => {
       getSingleOrder(firebaseKey).then(viewOrder);
     }
     if (e.target.id === 'create-order-btn') {
-      console.warn('test');
-      newOrderForm();
+      newForm();
     }
     // Brings up form to add an item to the menu
     if (e.target.id === 'add-menu-item') {
@@ -64,7 +66,19 @@ const domEvents = () => {
       console.warn('clicked menu button');
       getOrder().then(revenuePage);
     }
+    if (e.target.id.includes('addItemsToOrder')) {
+      getMenuItem().then(showOrderMenu);
+    }
+  });
+
+  document.querySelector('#viewContainer').addEventListener('change', (e) => {
+    const date1 = document.querySelector('#start').value;
+    const date2 = document.querySelector('#end').value;
+    if (e.target.id === 'end' && date1 !== '') {
+      completedOrders().then((orderArray) => revenuePage(orderArray, date1, date2));
+    } else if (e.target.id === 'start' && date2 !== '') {
+      completedOrders().then((orderArray) => revenuePage(orderArray, date1, date2));
+    }
   });
 };
-
 export default domEvents;

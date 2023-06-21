@@ -10,7 +10,7 @@ const addItemForm = (item = {}) => {
       <input type="text" class="form-control" id="dish-input" placeholder="Dish Name" value ="${item.dish || ''}" required>
     </div>
     <div class="form-box">
-      <input type="text" class="form-control" id="price-input" placeholder="Price" value ="${item.price || ''}" required>
+      <input type="number" class="form-control" id="price-input" placeholder="Price" value ="${item.price || ''}" required>
     </div>
     <div class="form-box">
       <input type="text" class="form-control" id="description-input" placeholder="Description" value ="${item.description || ''}" required>

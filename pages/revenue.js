@@ -1,40 +1,53 @@
 import renderToDom from '../utils/renderToDom';
 
-const revenuePage = (array) => {
+const revenuePage = (array, input1, input2) => {
+  console.warn(array);
   let grossIncome = 0;
   let totalTips = 0;
   let totalOnline = 0;
   let totalWalk = 0;
   let totalCash = 0;
   let totalCard = 0;
-  array.forEach((card) => {
-    grossIncome += (card.orderPrice + card.tip);
-    totalTips += card.tip;
-    if (card.paymentType === 'card') {
-      totalCard += 1;
-    } else {
-      totalCash += 1;
+
+  let domString = '';
+
+  domString += `<label for="start">Start date:</label>
+  <input type="date" id="start" name="rev-start"
+        value=${input1}
+        min="2018-01-01" max="2024-12-31">
+  <input type="date" id="end" name="rev-end"
+        value=${input2}
+        min="2018-01-01" max="2024-12-31">`;
+  renderToDom('#viewContainer', domString);
+  const date1 = document.getElementById('start').value;
+  const date2 = document.getElementById('end').value;
+  console.warn(date1);
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].time > date1 && array[i].time < date2) {
+      grossIncome += (array[i].orderPrice + array[i].tip);
+      totalTips += array[i].tip;
+      if (array[i].paymentType === 'card') {
+        totalCard += 1;
+      } else {
+        totalCash += 1;
+      }
+      if (array[i].orderMethod === 'online') {
+        totalOnline += 1;
+      } else {
+        totalWalk += 1;
+      }
     }
-    if (card.orderMethod === 'online') {
-      totalOnline += 1;
-    } else {
-      totalWalk += 1;
-    }
-  });
-  const domString = `
-  <div class="top-row">
-    <h1 class="title">REVENUE</h1>
-  </div>
-  <div id="revenue-page">
-    <h1><u><b>Gross Income</b></u></h1>
-    <h2><b>Gross Income:</b> $${grossIncome}</h2>
-    <h3><b>Total Tips:</b> $${totalTips}</h3>
-    <h3><b>Total online orders:</b> ${totalOnline}</h3>
-    <h3><b>Total walk in orders:</b> ${totalWalk}</h3>
-    <h3><b>Payment Types:</b></h3>
-    <h4><i>Cash</i> - ${totalCash}</h4>
-    <h4><i>Card</i> - ${totalCard}</h4>
-  </div>`;
+  }
+
+  domString += `<h1>Gross Income</h1>
+  <h2>Gross Income: $${grossIncome}</h2>
+  <h3>Total Tips: $${totalTips}</h3>
+  <h3>Total online orders: ${totalOnline}</h3>
+  <h3>Total walk in orders: ${totalWalk}</h3>
+  <h3>Payment Types:</h3>
+  <h4>Cash - ${totalCash}</h4>
+  <h4>Card - ${totalCard}</h4>`;
   renderToDom('#viewContainer', domString);
 };
 
