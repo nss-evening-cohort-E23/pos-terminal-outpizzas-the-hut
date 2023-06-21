@@ -3,7 +3,7 @@ import newForm from '../components/newOrderForm';
 import showOrderCards from '../pages/showOrder';
 import { getMenuItem } from '../api/menuData';
 import { showMenu } from '../pages/menu';
-// import homePage from '../pages/home';
+import homePage from '../pages/home';
 
 const navigationEvents = () => {
   document.querySelector('#navBar').addEventListener('click', (e) => {
@@ -21,7 +21,7 @@ const navigationEvents = () => {
     }
     if (e.target.id === 'logo') {
       console.warn('clicked menu button');
-      // homePage();
+      homePage();
     }
   });
 };

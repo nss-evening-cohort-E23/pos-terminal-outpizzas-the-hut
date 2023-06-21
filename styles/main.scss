@@ -19,7 +19,8 @@ nav {
 
 form {
   width: 50%;
-  background-color: rgb(185, 39, 201);
+  background-image: linear-gradient(rgb(212, 132, 241), rgb(104, 13, 87));
+  border: 1px solid white;
   padding: 30px 50px 30px 50px;
   border-radius: 20px;
 }
@@ -44,7 +45,7 @@ form {
 }
 
 .btn-primary {
-  background-color: yellowgreen;
+  background-image: linear-gradient(rgb(211, 246, 109), rgb(94, 171, 31));
   border: 1px solid white;
 }
 
