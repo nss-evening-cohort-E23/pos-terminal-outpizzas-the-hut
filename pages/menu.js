@@ -20,7 +20,7 @@ const showMenu = (array) => {
       <div class="card" id="${item.dish}-card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title" id="item-dish">${item.dish}</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary" id="item-price">Price: ${item.price}</h6>
+          <h6 class="card-subtitle mb-2 text-body-secondary" id="item-price">Price: $${item.price}</h6>
           <img id="pizza-pic" src="https://modpizza.com/wp-content/uploads/2021/12/Website-Maddy.png">
           <h6 class="card-subtitle mb-2 text-body-secondary" id="item-description">${item.description}</h6>
           <hr>
