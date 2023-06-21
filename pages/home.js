@@ -5,7 +5,7 @@ const homePage = () => {
   clearDom();
   const domString = `
   <div class="top-row">
-    <h1 id="welcome-title">HIP HOP PIZZA & WANGS</h1>
+    <h1 class="title">HIP HOP PIZZA & WANGS</h1>
   </div>
     <div welcome-buttons">
       <button id="viewOrders" "type="button" class="btn btn-primary">View Orders</button>

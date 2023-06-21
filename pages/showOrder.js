@@ -3,7 +3,7 @@ import renderToDom from '../utils/renderToDom';
 
 const showOrderCards = (array) => {
   clearDom();
-  let domString = '<div><select id="filterBy" class="form-select" aria-label="Default select example"><option selected disabled hidden>Filter by</option><option value="1">Open</option><option value="2">Closed</option></select><label for="search" class="form-label"></label><input id="search" type="text" class="form-control"></div>';
+  let domString = '<div class="top-row" ><h1 class="title">ORDERS</h1><select id="filterBy" class="form-select" aria-label="Default select example"><option selected disabled hidden>Filter by</option><option value="1">Open</option><option value="2">Closed</option></select><label for="search" class="form-label"></label><input id="search" type="text" class="form-control"></div>';
   array.forEach((card) => {
     domString += `
     <div class="card" style="width: 18rem;">

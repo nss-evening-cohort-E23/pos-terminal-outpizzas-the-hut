@@ -8,9 +8,12 @@ const revenuePage = (array, input1, input2) => {
   let totalCash = 0;
   let totalCard = 0;
 
-  let domString = '';
+  let domString = `
+  <div class="top-row">
+    <h1 class="title">REVENUE</h1>
+  </div>`;
 
-  domString += `<label for="start">Start date:</label>
+  domString += `<div id="date-inputs><label for="start">Start date:</label>
   <input type="date" id="start" name="rev-start"
         value=${input1 ? `${input1}` : '2023-06-01'}>
   <input type="date" id="end" name="rev-end"

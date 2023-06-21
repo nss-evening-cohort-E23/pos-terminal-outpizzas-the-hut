@@ -11,7 +11,7 @@ const viewOrder = (obj) => {
   } else {
     for (let i = 0; i < obj.menuItems.length; i++) {
       domString += `
-    <div class="card" style="width: 18rem;">
+    <div class="card" id="order-detail-card" style="width: 18rem;">
         <div class="card-body">
         <div class="mt-5">
         <h5>${obj.menuItems[i].dish}</h5>
