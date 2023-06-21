@@ -6,13 +6,16 @@ const addItemForm = (item = {}) => {
   const domString = `
   <form id="${item.firebaseKey ? `update-item--${item.firebaseKey}` : 'submit-item'}">
     <div class="form-box">
-      <h3 id="form-title">Add Menu Item:</h3>
+      <h3 id="form-title">${item.firebaseKey ? 'Update Menu Item:' : 'Add Menu Item:'}</h3>
       <input type="text" class="form-control" id="dish-input" placeholder="Dish Name" value ="${item.dish || ''}" required>
     </div>
     <div class="form-box">
       <input type="text" class="form-control" id="price-input" placeholder="Price" value ="${item.price || ''}" required>
     </div>
-      <button type="submit" id="submit-item-btn" class="btn btn-danger" for="submit-item">Add Item</button>
+    <div class="form-box">
+      <input type="text" class="form-control" id="description-input" placeholder="Description" value ="${item.description || ''}" required>
+    </div>
+      <button type="submit" id="submit-item-btn" class="btn btn-danger" for="submit-item">${item.firebaseKey ? 'Update Item' : 'Submit Item'}</button>
     </div>
   </form>`;
 

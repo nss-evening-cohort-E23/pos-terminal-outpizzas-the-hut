@@ -53,6 +53,22 @@ form {
   border: 1px solid white;
 }
 
+#logout-logo {
+  width: 40%;
+  align-self: center;
+  margin: 15px;
+}
+
+#google-auth-signin {
+  width: 20%;
+  align-self: center;
+}
+
+#logout-container {
+  display: flex;
+  flex-direction: column;
+}
+
 #logo {
   text-align: start;
 }
@@ -71,10 +87,10 @@ form {
   justify-content: center;
 }
 
-#welcome-title {
+.title {
   font-family: 'Bungee Shade', cursive;
-  font-size: 100px;
-  margin: 10px;
+  font-size: 90px;
+  margin: 15px;
 }
 
 #welcome-buttons {
@@ -85,4 +101,15 @@ form {
 
 #pizza-pic {
   max-width: 13rem;
+  margin: 15px 0 15px 0;
+}
+
+#card-icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+#revenue-page {
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
 }

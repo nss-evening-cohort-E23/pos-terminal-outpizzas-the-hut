@@ -4,7 +4,10 @@ import renderToDom from '../utils/renderToDom';
 const showOrderCards = (array) => {
   clearDom();
 
-  let domString = '';
+  let domString = `
+  <div class="top-row">
+    <h1 class="title">ORDERS</h1>
+  </div>`;
   array.forEach((card) => {
     domString += `
     <div class="card" style="width: 18rem;">

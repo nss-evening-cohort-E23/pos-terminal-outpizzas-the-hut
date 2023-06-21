@@ -13,6 +13,7 @@ const formEvents = () => {
       const payload = {
         dish: document.querySelector('#dish-input').value,
         price: document.querySelector('#price-input').value,
+        description: document.querySelector('#description-input').value,
       };
 
       document.querySelector('form').reset();
@@ -32,6 +33,7 @@ const formEvents = () => {
       const payload = {
         dish: document.querySelector('#dish-input').value,
         price: document.querySelector('#price-input').value,
+        description: document.querySelector('#description-input').value,
         firebaseKey,
       };
 
