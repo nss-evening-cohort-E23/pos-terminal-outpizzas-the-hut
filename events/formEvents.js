@@ -6,7 +6,7 @@ import { showMenu } from '../pages/menu';
 import { createOrder, getOrder, updateOrder } from '../api/orderData';
 import showOrderCards from '../pages/showOrder';
 import orderTotal from '../utils/orderTotal';
-// import showOrderCards from '../pages/showOrder';
+import addItemFunc from '../utils/addItemFunc';
 
 const formEvents = () => {
   document.querySelector('#maincontainer').addEventListener('submit', (e) => {
@@ -91,9 +91,29 @@ const addOrderItemFunc = () => {
       });
       console.warn('this is add order item', array);
     }
+
+    if (e.target.id.includes('update-order-item')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      console.warn('clicked edit button', e.target.id);
+      console.warn('origianl array', array);
+      const newArr = addItemFunc(array, firebaseKey);
+      console.warn('before payload', newArr);
+      const payload = {
+        menuItems: newArr,
+        time: new Date().toISOString().split('T')[0],
+        firebaseKey,
+      };
+
+      updateOrder(payload).then(() => {
+        getOrder().then(showOrderCards);
+      });
+      array = [];
+    }
   });
+
   document.querySelector('#formContainer').addEventListener('submit', (e) => {
     // SUBMIT ORDER
+    console.warn(e.submitter.id);
     if (e.target.id.includes('submit-order')) {
       console.warn('submit order clicked');
       const payload = {

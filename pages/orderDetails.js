@@ -7,7 +7,7 @@ const viewOrder = (obj) => {
   let domString = '';
 
   if (obj.menuItems === undefined) {
-    domString += '<p>There are no items in this order currently</p>';
+    domString += '<p>There are no items in this order currently</p> <div id="showMenuItems"></div>';
   } else {
     for (let i = 0; i < obj.menuItems.length; i++) {
       domString += `
@@ -20,15 +20,16 @@ const viewOrder = (obj) => {
         </div>
       </div>
       </div>
-     </div>`;
+     </div>
+     <div id="showMenuItems"></div>`;
     }
   }
   domString += `
-  <button type="button" class="btn btn-primary" id="addmenuitem--${obj.firebaseKey}">Add Item</button>
+  <button type="button" class="btn btn-primary" id="addNewItem--${obj.firebaseKey}">Add Item</button>
   <button type="button" class="btn btn-primary" id="payment--${obj.firebaseKey}">Go To Payment</button>
   `;
 
-  renderToDom('#viewContainer', domString);
+  renderToDom('#formContainer', domString);
 };
 
 export default viewOrder;

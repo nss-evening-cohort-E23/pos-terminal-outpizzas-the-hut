@@ -9,7 +9,7 @@ import showOrderCards from '../pages/showOrder';
 import revenuePage from '../pages/revenue';
 import closeOrderForm from '../pages/closeOrderForm';
 import { showMenu } from '../pages/menu';
-import showOrderMenu from '../pages/selectorMenu';
+import { showOrderMenu, showOrderMenuItem } from '../pages/selectorMenu';
 // import { showMenu } from '../pages/menu';
 // import addItemsToOrder from '../pages/addItemsToOrder';
 
@@ -68,6 +68,10 @@ const domEvents = () => {
     }
     if (e.target.id.includes('addItemsToOrder')) {
       getMenuItem().then(showOrderMenu);
+    }
+    if (e.target.id.includes('addNewItem')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getMenuItem().then((menuArray) => showOrderMenuItem(firebaseKey, menuArray));
     }
     // UPDATE ORDER BTN
     if (e.target.id.includes('edit-order')) {
