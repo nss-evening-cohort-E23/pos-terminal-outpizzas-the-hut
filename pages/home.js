@@ -7,7 +7,7 @@ const homePage = () => {
   <div class="top-row">
     <h1 class="title">HIP HOP PIZZA & WANGS</h1>
   </div>
-    <div welcome-buttons">
+    <div id="welcome-buttons">
       <button id="viewOrders" "type="button" class="btn btn-primary">View Orders</button>
       <button id="create-order-btn" type="button" class="btn btn-primary">Create An Order</button>
       <button id="revenueBtn" type="button" class="btn btn-primary">View Revenue</button>
