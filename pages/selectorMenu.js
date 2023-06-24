@@ -22,7 +22,8 @@ const showOrderMenu = (array) => {
 
 const showOrderMenuItem = (firebaseKey, array) => {
   clearDom();
-  let domString = `<button type="button" class="btn btn-primary" id="update-order-item--${firebaseKey}">Submit</button>`;
+  let domString = `<div><button type="button" class="btn btn-primary" id="update-order-item--${firebaseKey}">Submit</button>
+  <div id="selectorMenuDiv">`;
 
   array.forEach((item) => {
     domString += `
@@ -37,6 +38,7 @@ const showOrderMenuItem = (firebaseKey, array) => {
       </div> 
     </div>`;
   });
+  domString += '</div></div>';
   renderToDom('#formContainer', domString);
 };
 

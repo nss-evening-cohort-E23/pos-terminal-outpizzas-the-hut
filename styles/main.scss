@@ -163,3 +163,10 @@ justify-content: space-between;
   flex-direction: column;
   align-items: center;
 }
+
+#selectorMenuDiv {
+  margin: 0 auto;
+  display: flex;
+  flex-flow: wrap row;
+  width: 50%;
+}
