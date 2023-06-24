@@ -21,6 +21,9 @@ const domEvents = () => {
     if (e.target.id === 'viewOrders') {
       getOrder().then(showOrderCards);
     }
+    if (e.target.id === 'clearFilter') {
+      getOrder().then(showOrderCards);
+    }
     if (e.target.id === 'create-order-btn') {
       newForm();
     }
