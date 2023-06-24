@@ -24,6 +24,20 @@ A web app designed to serve as a point of sale system for an imagined mom & pop 
 ## Target User:
 The target user for this application is a restaurant owner or businessperson overseeing restaurant management and operations. Restaurants must be organized, efficient, and on top of their revenue metrics in order to succeed in this industry, and this app provides a simple foundation for all of the above. This allows the user to spend less time combing through spreadsheets and more time focused on providing an excellent customer experience. 
 
+## Screenshots:
+<img width="600" alt="Screen Shot 2023-06-24 at 12 09 58 PM" src="https://github.com/nss-evening-cohort-E23/pos-terminal-outpizzas-the-hut/assets/120522998/0269329b-08aa-4f7e-be1f-7264f17c0b34">
+
+<img width="600" alt="Screen Shot 2023-06-24 at 11 44 23 AM" src="https://github.com/nss-evening-cohort-E23/pos-terminal-outpizzas-the-hut/assets/120522998/1bbd7384-ad98-450e-8f4f-54028f51b10e">
+
+<img width="600" alt="Screen Shot 2023-06-24 at 11 55 41 AM" src="https://github.com/nss-evening-cohort-E23/pos-terminal-outpizzas-the-hut/assets/120522998/180faab6-5eda-4e63-a82d-4b5b207badc2">
+
+<img width="600" alt="Screen Shot 2023-06-24 at 11 46 54 AM" src="https://github.com/nss-evening-cohort-E23/pos-terminal-outpizzas-the-hut/assets/120522998/c4c9743b-df62-4723-a0b5-47e83d9f6a38">
+
+<img width="600" alt="Screen Shot 2023-06-24 at 11 53 53 AM" src="https://github.com/nss-evening-cohort-E23/pos-terminal-outpizzas-the-hut/assets/120522998/5a86c81c-9c9f-4a22-a48f-f922e12a9b33">
+
+<img width="600" alt="Screen Shot 2023-06-24 at 11 56 18 AM" src="https://github.com/nss-evening-cohort-E23/pos-terminal-outpizzas-the-hut/assets/120522998/d323eb31-c563-4ccb-963b-10a027c52938">
+
+<hr>
 
 **[Link to Figma wireframe](https://www.figma.com/file/627muqsb4Ns7tA0b2viebw/Outpizzas-the-Hut?type=design&node-id=0-1&t=MbsoMFWYghABVN5g-0)**
 
