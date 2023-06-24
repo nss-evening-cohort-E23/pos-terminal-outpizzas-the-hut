@@ -9,15 +9,17 @@ import showOrderCards from '../pages/showOrder';
 import revenuePage from '../pages/revenue';
 import closeOrderForm from '../pages/closeOrderForm';
 import { showMenu } from '../pages/menu';
+import { filterClosed, filterOpen, search } from '../utils/sample_data/filterFun';
 import { showOrderMenu, showOrderMenuItem } from '../pages/selectorMenu';
-// import { showMenu } from '../pages/menu';
-// import addItemsToOrder from '../pages/addItemsToOrder';
 
 const domEvents = () => {
   document.querySelector('#maincontainer').addEventListener('click', (e) => {
     if (e.target.id.includes('order-details--')) {
       const [, firebaseKey] = e.target.id.split('--');
       getSingleOrder(firebaseKey).then(viewOrder);
+    }
+    if (e.target.id === 'viewOrders') {
+      getOrder().then(showOrderCards);
     }
     if (e.target.id === 'create-order-btn') {
       newForm();
@@ -60,7 +62,8 @@ const domEvents = () => {
     }
 
     if (e.target.id === 'revenueBtn') {
-      getOrder().then(revenuePage);
+      console.warn('clicked menu button');
+      completedOrders().then((orderArray) => revenuePage(orderArray));
     }
     if (e.target.id.includes('addItemsToOrder')) {
       getMenuItem().then(showOrderMenu);
@@ -78,12 +81,33 @@ const domEvents = () => {
   });
 
   document.querySelector('#viewContainer').addEventListener('change', (e) => {
-    const date1 = document.querySelector('#start').value;
-    const date2 = document.querySelector('#end').value;
-    if (e.target.id === 'end' && date1 !== '') {
-      completedOrders().then((orderArray) => revenuePage(orderArray, date1, date2));
-    } else if (e.target.id === 'start' && date2 !== '') {
-      completedOrders().then((orderArray) => revenuePage(orderArray, date1, date2));
+    if (e.target.id === ('start') || e.target.id === ('end')) {
+      const date1 = document.querySelector('#start').value;
+      const date2 = document.querySelector('#end').value;
+      if (e.target.id === 'end' && date1 !== '') {
+        completedOrders().then((orderArray) => revenuePage(orderArray, date1, date2));
+      } else if (e.target.id === 'start' && date2 !== '') {
+        completedOrders().then((orderArray) => revenuePage(orderArray, date1, date2));
+      }
+    }
+  });
+  document.querySelector('#maincontainer').addEventListener('change', (e) => {
+    switch (e.target.value) {
+      case '1':
+        console.warn(1);
+        filterClosed();
+        break;
+      case '2':
+        console.warn(2);
+        filterOpen();
+        break;
+      default:
+        break;
+    }
+  });
+  document.querySelector('#viewContainer').addEventListener('keydown', (e) => {
+    if (e.key === ('Enter')) {
+      search(e);
     }
   });
 };

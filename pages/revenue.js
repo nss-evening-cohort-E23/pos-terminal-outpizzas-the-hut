@@ -8,38 +8,56 @@ const revenuePage = (array, input1, input2) => {
   let totalCash = 0;
   let totalCard = 0;
 
-  let domString = '';
+  let domString = `
+  <div class="top-row">
+    <h1 class="title">REVENUE</h1>
+  </div>`;
 
-  domString += `<label for="start">Start date:</label>
+  domString += `<div id="date-inputs><label for="start">Start date:</label>
   <input type="date" id="start" name="rev-start"
-        value=${input1}
-        min="2018-01-01" max="2024-12-31">
+        value=${input1 ? `${input1}` : '2023-06-01'}>
   <input type="date" id="end" name="rev-end"
-        value=${input2}
-        min="2018-01-01" max="2024-12-31">`;
+        value=${input2 ? `${input2}` : new Date().toISOString().split('T')[0]}>`;
   renderToDom('#viewContainer', domString);
   const date1 = document.getElementById('start').value;
   const date2 = document.getElementById('end').value;
+  console.warn(date1);
+  console.warn(date2);
 
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].time > date1 && array[i].time < date2) {
-      grossIncome += (array[i].orderPrice + array[i].tip);
-      totalTips += array[i].tip;
-      if (array[i].paymentType === 'card') {
+  // for (let i = 0; i < array.length; i++)
+  array.forEach((item) => {
+    if (!input1) {
+      console.warn('defualt');
+      grossIncome += (item.orderPrice + item.tip);
+      totalTips += item.tip;
+      if (item.paymentType === 'card') {
         totalCard += 1;
       } else {
         totalCash += 1;
       }
-      if (array[i].orderMethod === 'online') {
+      if (item.orderMethod === 'Online') {
+        totalOnline += 1;
+      } else {
+        totalWalk += 1;
+      }
+    } else if (item.time > date1 && item.time < date2) {
+      grossIncome += (item.orderPrice + item.tip);
+      totalTips += item.tip;
+      if (item.paymentType === 'card') {
+        totalCard += 1;
+      } else {
+        totalCash += 1;
+      }
+      if (item.orderMethod === 'Online') {
         totalOnline += 1;
       } else {
         totalWalk += 1;
       }
     }
-  }
+  });
 
   domString += `<h1>Gross Income</h1>
-  <h2>Gross Income: $${grossIncome}</h2>
+  <h2>Gross Income: $${grossIncome.toFixed(2)}</h2>
   <h3>Total Tips: $${totalTips}</h3>
   <h3>Total online orders: ${totalOnline}</h3>
   <h3>Total walk in orders: ${totalWalk}</h3>

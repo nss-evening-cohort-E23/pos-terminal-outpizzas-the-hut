@@ -11,17 +11,18 @@ const viewOrder = (obj) => {
   } else {
     for (let i = 0; i < obj.menuItems.length; i++) {
       domString += `
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <div class="mt-5">
-        <h5>${obj.menuItems[i].dish}</h5>
-        <h5>${obj.menuItems[i].price}</h5>
-          <i id="delete-item--${obj.firebaseKey}--${obj.menuItems[i].id}">DELETE ITEM</i>
+      <div id="order-detail-card-container">
+        <div class="card" id="order-detail-card">
+          <div class="card-body" id="order-detail-card-body">
+            <div class="mt-5" id="order-detail-card-items">
+              <h5 id="order-item-dish">${obj.menuItems[i].dish}</h5>
+              <h5 id="order-item-price">$${obj.menuItems[i].price}</h5>
+              <i id="delete-item--${obj.firebaseKey}--${obj.menuItems[i].id}">DELETE ITEM</i>
+            </div>
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
-     </div>
-     <div id="showMenuItems"></div>`;
+      </div>`;
     }
   }
   domString += `

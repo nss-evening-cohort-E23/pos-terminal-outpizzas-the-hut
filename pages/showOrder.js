@@ -3,13 +3,13 @@ import renderToDom from '../utils/renderToDom';
 
 const showOrderCards = (array) => {
   clearDom();
-
-  let domString = '';
+  let domString = `<div class="top-row"><h1 class="title">ORDERS</h1>
+  <div id="filter-search-container"><select id="filterBy" class="form-select" aria-label="Default select example"><option selected disabled hidden>Filter By</option><option value="1">Open</option><option value="2">Closed</option></select><label for="search" class="form-label"></label><input id="search" type="text" class="form-control" placeholder="Search Orders..."></div></div>`;
   array.forEach((card) => {
     domString += `
     <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">${card.name}'s order</h5>
+    <h5 class="order-name card-title">${card.name}'s order</h5>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Completed: ${card.completed}</li>
