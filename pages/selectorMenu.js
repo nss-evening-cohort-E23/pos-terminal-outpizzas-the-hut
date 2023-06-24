@@ -21,7 +21,6 @@ const showOrderMenu = (array) => {
 };
 
 const showOrderMenuItem = (firebaseKey, array) => {
-  console.warn(array);
   clearDom();
   let domString = `<button type="button" class="btn btn-primary" id="update-order-item--${firebaseKey}">Submit</button>`;
 

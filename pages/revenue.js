@@ -1,7 +1,6 @@
 import renderToDom from '../utils/renderToDom';
 
 const revenuePage = (array, input1, input2) => {
-  console.warn(array);
   let grossIncome = 0;
   let totalTips = 0;
   let totalOnline = 0;
@@ -21,7 +20,6 @@ const revenuePage = (array, input1, input2) => {
   renderToDom('#viewContainer', domString);
   const date1 = document.getElementById('start').value;
   const date2 = document.getElementById('end').value;
-  console.warn(date1);
 
   for (let i = 0; i < array.length; i++) {
     if (array[i].time > date1 && array[i].time < date2) {

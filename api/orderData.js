@@ -41,7 +41,7 @@ const updateOrder = (payload) => new Promise((resolve, reject) => {
     body: JSON.stringify(payload),
   })
     .then((response) => response.json())
-    .then((data) => resolve(data))
+    .then(resolve)
     .catch(reject);
 });
 
