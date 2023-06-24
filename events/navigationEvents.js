@@ -11,15 +11,12 @@ const navigationEvents = () => {
       getOrder().then(showOrderCards);
     }
     if (e.target.id === 'viewMenu') {
-      console.warn('clicked menu button');
       getMenuItem().then(showMenu);
     }
     if (e.target.id === 'createOrder') {
-      console.warn('new form event listener');
       newForm();
     }
     if (e.target.id === 'logo') {
-      console.warn('clicked menu button');
       homePage();
     }
   });

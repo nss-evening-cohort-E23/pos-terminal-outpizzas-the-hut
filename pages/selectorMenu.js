@@ -1,4 +1,4 @@
-// import clearDom from '../utils/clearDom';
+import clearDom from '../utils/clearDom';
 import renderToDom from '../utils/renderToDom';
 
 const showOrderMenu = (array) => {
@@ -20,4 +20,24 @@ const showOrderMenu = (array) => {
   renderToDom('#showMenuItems', domString);
 };
 
-export default showOrderMenu;
+const showOrderMenuItem = (firebaseKey, array) => {
+  clearDom();
+  let domString = `<button type="button" class="btn btn-primary" id="update-order-item--${firebaseKey}">Submit</button>`;
+
+  array.forEach((item) => {
+    domString += `
+    <div class="card" id="${item.dish}-card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title" id="item-dish">${item.dish}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary" id="item-price">Price: ${item.price}</h6>
+        <hr>
+        <div id="card-icons">
+          <button type="button" id="add-order-item--${item.firebaseKey}" class="fas fa-solid fa-plus"></button>
+        </div>
+      </div> 
+    </div>`;
+  });
+  renderToDom('#formContainer', domString);
+};
+
+export { showOrderMenu, showOrderMenuItem };

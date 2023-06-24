@@ -10,7 +10,7 @@ import revenuePage from '../pages/revenue';
 import closeOrderForm from '../pages/closeOrderForm';
 import { showMenu } from '../pages/menu';
 import { filterClosed, filterOpen, search } from '../utils/sample_data/filterFun';
-import showOrderMenu from '../pages/selectorMenu';
+import { showOrderMenu, showOrderMenuItem } from '../pages/selectorMenu';
 
 const domEvents = () => {
   document.querySelector('#maincontainer').addEventListener('click', (e) => {
@@ -26,7 +26,6 @@ const domEvents = () => {
     }
     // Brings up form to add an item to the menu
     if (e.target.id === 'add-menu-item') {
-      console.warn('add menu item button clicked');
       addItemForm();
     }
     if (e.target.id.includes('delete-order')) {
@@ -49,14 +48,12 @@ const domEvents = () => {
     }
     // EDIT MENU ITEM CLICK EVENT
     if (e.target.id.includes('edit-menu-item')) {
-      console.warn('edit menu item button clicked');
       const [, firebaseKey] = e.target.id.split('--');
 
       getSingleMenuItem(firebaseKey).then((cardObj) => addItemForm(cardObj));
     }
 
     if (e.target.id.includes('delete-menu-item')) {
-      console.warn('delete menu item button clicked', e.target.id);
       const [, firebaseKey] = e.target.id.split('--');
 
       deleteMenuItem(firebaseKey).then(() => {
@@ -71,9 +68,12 @@ const domEvents = () => {
     if (e.target.id.includes('addItemsToOrder')) {
       getMenuItem().then(showOrderMenu);
     }
+    if (e.target.id.includes('addNewItem')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getMenuItem().then((menuArray) => showOrderMenuItem(firebaseKey, menuArray));
+    }
     // UPDATE ORDER BTN
     if (e.target.id.includes('edit-order')) {
-      console.warn('update order clicked');
       const [, firebaseKey] = e.target.id.split('--');
 
       getSingleOrder(firebaseKey).then((cardObj) => newForm(cardObj));

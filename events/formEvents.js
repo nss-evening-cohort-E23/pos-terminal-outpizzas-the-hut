@@ -3,17 +3,17 @@ import {
 } from '../api/menuData';
 import homePage from '../pages/home';
 import { showMenu } from '../pages/menu';
-import { createOrder, getOrder, updateOrder } from '../api/orderData';
+import {
+  createOrder, getOrder, updateOrder, getSingleOrder
+} from '../api/orderData';
 import showOrderCards from '../pages/showOrder';
 import orderTotal from '../utils/orderTotal';
 
 const formEvents = () => {
   document.querySelector('#maincontainer').addEventListener('submit', (e) => {
     e.preventDefault();
-    console.warn(e.target.id);
     // CREATE MENU ITEM
     if (e.target.id.includes('submit-item')) {
-      console.warn('clicked submit menu item button', e.target.id);
       const payload = {
         dish: document.querySelector('#dish-input').value,
         price: document.querySelector('#price-input').value,
@@ -33,7 +33,6 @@ const formEvents = () => {
     // UPDATE MENU ITEM
     if (e.target.id.includes('update-item')) {
       const [, firebaseKey] = e.target.id.split('--');
-      console.warn('clicked edit button', e.target.id);
       const payload = {
         dish: document.querySelector('#dish-input').value,
         price: document.querySelector('#price-input').value,
@@ -49,7 +48,6 @@ const formEvents = () => {
     }
     if (e.target.id.includes('update-order')) {
       const [, firebaseKey] = e.target.id.split('--');
-      console.warn('clicked edit button', e.target.id);
       const payload = {
         name: document.querySelector('#name').value,
         email: document.querySelector('#email-form').value,
@@ -66,7 +64,6 @@ const formEvents = () => {
     }
     if (e.target.id.includes('close-order')) {
       const [, firebaseKey] = e.target.id.split('--');
-      console.warn(firebaseKey);
       const payload = {
         paymentType: document.querySelector('#ptype').value,
         tip: Number(document.querySelector('#tip-input').value),
@@ -80,7 +77,6 @@ const formEvents = () => {
     }
   });
 };
-
 const addOrderItemFunc = () => {
   let array = [];
   document.querySelector('#formContainer').addEventListener('click', (e) => {
@@ -90,13 +86,31 @@ const addOrderItemFunc = () => {
         Object.assign(item, { id: array.length });
         array.push(item);
       });
-      console.warn('this is add order item', array);
+    }
+
+    if (e.target.id.includes('update-order-item')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getSingleOrder(firebaseKey).then((orderObj) => orderObj.menuItems.forEach((item) => {
+        Object.assign(item, { id: array.length });
+        array.push(item);
+      })).then(() => {
+        const payload = {
+          menuItems: array,
+          time: new Date().toISOString().split('T')[0],
+          firebaseKey,
+        };
+
+        updateOrder(payload).then(() => {
+          getOrder().then(showOrderCards);
+        });
+        array = [];
+      });
     }
   });
+
   document.querySelector('#formContainer').addEventListener('submit', (e) => {
     // SUBMIT ORDER
     if (e.target.id.includes('submit-order')) {
-      console.warn('submit order clicked');
       const payload = {
         completed: false,
         email: document.querySelector('#email-form').value,
