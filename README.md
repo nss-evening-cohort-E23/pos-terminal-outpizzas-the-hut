@@ -4,6 +4,7 @@
 ## Overview:
 A web app designed to serve as a point of sale system for an imagined mom & pop pizza shop. The app encompasses order creation and management, menu creation and management, and a revenue dashboard for tracking business metrics.
 
+[View the completed project here](https://playful-alpaca-602939.netlify.app/)
 
 ## Features:
 ***Orders***
